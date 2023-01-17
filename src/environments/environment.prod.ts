@@ -1,5 +1,4 @@
 export const environment = {
   production: true,
-  rolMedico: 'TRA',
-  rolPaciente: 'PAC'
+  urlApi: 'https://localhost:7259/api/',
 };

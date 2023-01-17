@@ -2,14 +2,9 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaestrasComponent } from './components/maestras/maestras.component';
-import { DataMaestraComponent } from './components/data-maestra/data-maestra.component';
-import { PersonasComponent } from './components/personas/personas.component';
-import { PacientesComponent } from './components/pacientes/pacientes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SpinnerLoaderComponent } from './components/spinner-loader/spinner-loader.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { PersonasFormComponent } from './components/personas/personas-form/personas-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
@@ -22,28 +17,18 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 import { DatePipe } from '@angular/common';
-import { PacientesFormComponent } from './components/pacientes/pacientes-form/pacientes-form.component';
-import { MaestrasFormComponent } from './components/maestras/maestras-form/maestras-form.component';
-import { DataMaestraFormComponent } from './components/data-maestra/data-maestra-form/data-maestra-form.component';
-import { DataComponent } from './components/data/data.component';
-import { DescargarPdfComponent } from './components/descargar-pdf/descargar-pdf.component';
+import { SearchComponent } from './components/search/search.component';
+import { FlightsComponent } from './components/flights/flights.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MaestrasComponent,
-    DataMaestraComponent,
-    PersonasComponent,
-    PacientesComponent,
     SpinnerLoaderComponent,
     NavBarComponent,
-    PersonasFormComponent,
-    PacientesFormComponent,
-    MaestrasFormComponent,
-    DataMaestraFormComponent,
-    DataComponent,
-    DescargarPdfComponent
+    SearchComponent,
+    FlightsComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +47,7 @@ import { DescargarPdfComponent } from './components/descargar-pdf/descargar-pdf.
     MatDialogModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatDividerModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

@@ -1,0 +1,47 @@
+<app-spinner-loader *ngIf="this.loading"></app-spinner-loader>
+<div>
+    <div
+        style="display: flex;justify-content: center;height: 100%;position: absolute; width: 100%;align-items: center;">
+        <div class="container" style="padding: 20px;">
+            <form [formGroup]="this.formSearch">
+                <div class="wrapper table-responsive row">
+                    <div class="col-md-5">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Origen:</mat-label>
+                            <input matInput #origin maxlength="3" minlength="3" placeholder="Origen" required
+                                onkeyup="javascript:this.value=this.value.toUpperCase();" formControlName="origin">
+                            <mat-hint align="end">{{origin.value.length}} / 3</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-5">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Destino:</mat-label>
+                            <input matInput #destination maxlength="3" minlength="3" placeholder="Destino" required
+                                onkeyup="javascript:this.value=this.value.toUpperCase();" formControlName="destination">
+                            <mat-hint align="end">{{destination.value.length}} / 3</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Moneda: </mat-label>
+                            <mat-select id="currency" name="currency" #currency formControlName="currency">
+                                <mat-option value="USD">Dolar</mat-option>
+                                <mat-option value="COP">Peso colombiano</mat-option>
+                                <mat-option value="EUR">Euro</mat-option>
+                                <mat-option value="CHF">Franco Suizo</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="example-button-container">
+                        <button mat-fab color="primary" aria-label="Example icon button with a delete icon"
+                            style="float: right; margin: -20px 40px 0px 0px;" [disabled]="this.formSearch.invalid" (click)="SearchJourney();">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
