@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   urlApi: 'https://localhost:7259/api/',
+  urlApiNewshore: 'https://recruiting-api.newshore.es/api/flights/0',
 };
 
 /*

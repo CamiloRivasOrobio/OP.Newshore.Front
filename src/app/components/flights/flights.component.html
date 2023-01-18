@@ -1,30 +1,51 @@
 <app-spinner-loader *ngIf="this.loading"></app-spinner-loader>
 <div>
     <div class="container" style="padding: 100px 10px 0px 10px;">
-        <div *ngFor="let flight of flights; let i = index">
-            <div class="wrapper table-responsive row">
-                <div class="col-md-12">
-                    <label>Número de vuelo:
-                        {{flights[i].transport.flightCarrier}}{{flights[i].transport.flightNumber}}</label>
+        <div class="row" *ngIf="this.data.succeeded">
+            <form class="form-group col-md-4" [formGroup]="formFlight" (change)="ChangeCurrency();">
+                <label for="inputState">Moneda</label>
+                <select id="inputState" class="form-control" #currencyValue name="currencyValue" id="currencyValue"
+                    formControlName="currencyValue">
+                    <option value="USD">Dolar</option>
+                    <option value="COP">Peso colombiano</option>
+                    <option value="EUR">Euro</option>
+                    <option value="CHF">Franco Suizo</option>
+                </select>
+            </form>
+        </div>
+        <div *ngIf="this.data.succeeded">
+            <div *ngFor="let flight of flights; let i = index">
+                <div class="wrapper table-responsive row">
+                    <div class="col-md-12">
+                        <label>Número de vuelo:
+                            {{flights[i].transport.flightCarrier}}{{flights[i].transport.flightNumber}}</label>
+                        <mat-divider style="margin: 0px 0px 10px 0px;"></mat-divider>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="wi">Salida</label>
+                        <label class="wi originTittle">{{flight.origin}}</label>
+                    </div>
+                    <div class="col-md-2" style="font-size: 32px; text-align: center; padding: 2% 0 0 0;">
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+                    <div class="col-md-5" style="text-align: end;">
+                        <label class="wi">Llegada</label>
+                        <label class="wi originTittle">{{flight.destination}}</label>
+                    </div>
                     <mat-divider style="margin: 0px 0px 10px 0px;"></mat-divider>
-                </div>
-                <div class="col-md-5">
-                    <label class="wi">Salida</label>
-                    <label class="wi originTittle">{{flight.origin}}</label>
-                </div>
-                <div class="col-md-2" style="font-size: 32px; text-align: center; padding: 2% 0 0 0;">
-                    <i class="fa-solid fa-plane"></i>
-                </div>
-                <div class="col-md-5" style="text-align: end;">
-                    <label class="wi">Llegada</label>
-                    <label class="wi originTittle">{{flight.destination}}</label>
-                </div>
-                <mat-divider style="margin: 0px 0px 10px 0px;"></mat-divider>
-                <div class="col-md-12" style="text-align: center;">
-                    <label style="font-weight: 600;">Precio: </label>
-                    <label>{{flight.price | currency: this.currency}}</label>
+                    <div class="col-md-12" style="text-align: center;">
+                        <label style="font-weight: 600;">Precio: </label>
+                        <label>{{flight.price | currency: this.currencyVa}}</label>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="wrapper table-responsive row" *ngIf="!this.data.succeeded">
+            {{this.data.message}}
+        </div>
+        <div class="wrapper table-responsive row">
+            <label style="font-weight: 600;">Precio: </label>
+            <label>{{this.journey.price | currency: this.currencyVa}}</label>
         </div>
     </div>
 </div>

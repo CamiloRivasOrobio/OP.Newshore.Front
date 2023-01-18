@@ -21,6 +21,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { DatePipe } from '@angular/common';
 import { SearchComponent } from './components/search/search.component';
 import { FlightsComponent } from './components/flights/flights.component';
+import { DestinationsComponent } from './components/destinations/destinations.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { FlightsComponent } from './components/flights/flights.component';
     NavBarComponent,
     SearchComponent,
     FlightsComponent,
+    DestinationsComponent,
   ],
   imports: [
     BrowserModule,

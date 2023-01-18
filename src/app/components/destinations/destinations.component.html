@@ -1,0 +1,35 @@
+<app-spinner-loader *ngIf="this.loading"></app-spinner-loader>
+<div>
+    <div class="container" style="padding: 100px 10px 0px 10px;">
+        <div *ngIf="this.flights.length > 0">
+            <div *ngFor="let flight of flights; let i = index">
+                <div class="wrapper table-responsive row">
+                    <div class="col-md-12">
+                        <label>Número de vuelo:
+                            {{flight.flightCarrier}}{{flight.flightNumber}}</label>
+                        <mat-divider style="margin: 0px 0px 10px 0px;"></mat-divider>
+                    </div>
+                    <div class="col-md-5">
+                        <label class="wi">Salida</label>
+                        <label class="wi originTittle">{{flight.departureStation}}</label>
+                    </div>
+                    <div class="col-md-2" style="font-size: 32px; text-align: center; padding: 2% 0 0 0;">
+                        <i class="fa-solid fa-plane"></i>
+                    </div>
+                    <div class="col-md-5" style="text-align: end;">
+                        <label class="wi">Llegada</label>
+                        <label class="wi originTittle">{{flight.arrivalStation}}</label>
+                    </div>
+                    <mat-divider style="margin: 0px 0px 10px 0px;"></mat-divider>
+                    <div class="col-md-12" style="text-align: center;">
+                        <label style="font-weight: 600;">Precio: </label>
+                        <label>{{flight.price | currency: "USD"}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper table-responsive row" *ngIf="this.flights.length == 0">
+            No hay vuelos disponibles
+        </div>
+    </div>
+</div>
