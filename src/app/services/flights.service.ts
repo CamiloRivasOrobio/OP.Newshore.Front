@@ -12,8 +12,7 @@ export class FlightsService {
   constructor(private http: HttpClient) { }
 
   public GetJourney(data?: any): Observable<Response> {
-    return this.http.get<Response>(environment.urlApi + 'v1/Flight?Origin=' + data?.Origin + '&Destination=' + data?.Destination + '&Currency=' +
-      (data?.Currency == null || data?.Currency == '' ? 'USD' : data?.Currency));
+    return this.http.get<Response>(environment.urlApi + 'v1/Flight?Origin=' + data?.Origin + '&Destination=' + data?.Destination + '&Currency=' + data?.Currency);
   }
   public GetAllFlights(): Observable<Flights[]> {
     return this.http.get<Flights[]>(environment.urlApiNewshore);

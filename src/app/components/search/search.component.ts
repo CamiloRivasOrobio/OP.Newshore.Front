@@ -18,7 +18,7 @@ export class SearchComponent implements OnInit {
     this.formSearch = this.formBuilder.group({
       origin: ['', Validators.required, Validators.minLength(3), Validators.maxLength(3)],
       destination: ['', Validators.required, Validators.minLength(3), Validators.maxLength(3)],
-      currency: ['']
+      currency: ['USD']
     });
     this.loading = false;
   }
@@ -31,8 +31,7 @@ export class SearchComponent implements OnInit {
       var origin = this.formSearch.controls['origin'].value;
       var destination = this.formSearch.controls['destination'].value;
       var currency = this.formSearch.controls['currency'].value;
-      localStorage.setItem("currency", (currency == "" ? "USD" : currency));
-      this.router.navigate(['flight/' + origin + '/' + destination + '/' + (currency == "" ? "USD" : currency)]);
+      this.router.navigate(['flight/' + origin.toUpperCase() + '/' + destination.toUpperCase() + '/' + currency.toUpperCase()]);
     }
   }
 }
