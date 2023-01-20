@@ -30,8 +30,7 @@ export class SearchComponent implements OnInit {
       var origin = this.formSearch.controls['origin'].value;
       var destination = this.formSearch.controls['destination'].value;
       var currency = this.formSearch.controls['currency'].value;
-      localStorage.setItem("currency", currency);
-      this.router.navigate(['flight/' + origin + '/' + destination + '/' + currency]);
+      this.router.navigate(['flight/' + origin.toUpperCase() + '/' + destination.toUpperCase() + '/' + currency.toUpperCase()]);
     }
   }
 }

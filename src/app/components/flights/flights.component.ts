@@ -5,7 +5,6 @@ import { Flight } from 'src/app/models/flight';
 import { Journey } from 'src/app/models/journey';
 import { Response } from 'src/app/models/response';
 import { FlightsService } from 'src/app/services/flights.service';
-import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-flights',
@@ -36,7 +35,6 @@ export class FlightsComponent implements OnInit {
     this.flightsService.GetJourney({ Origin: this.originVa, Destination: this.destinationVa, Currency: this.currencyVa }).subscribe(
       (data: Response) => {
         this.data = data;
-        Swal.fire(data.message);
         this.journey = data.journey;
         this.flights = this.journey.flights;
         this.loading = false;
