@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { ControlValueAccessor, FormBuilder, FormGroup, NG_VALUE_ACCESSOR, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -12,13 +11,13 @@ import Swal from 'sweetalert2';
 export class SearchComponent implements OnInit {
   public loading: boolean = true;
   public formSearch: any = FormGroup;
-  constructor(public dialog: MatDialog, public formBuilder: FormBuilder, public router: Router) { }
+  constructor(public formBuilder: FormBuilder, public router: Router) { }
 
   ngOnInit(): void {
     this.formSearch = this.formBuilder.group({
       origin: ['', Validators.required, Validators.minLength(3), Validators.maxLength(3)],
       destination: ['', Validators.required, Validators.minLength(3), Validators.maxLength(3)],
-      currency: ['']
+      currency: ['USD']
     });
     this.loading = false;
   }
@@ -31,8 +30,8 @@ export class SearchComponent implements OnInit {
       var origin = this.formSearch.controls['origin'].value;
       var destination = this.formSearch.controls['destination'].value;
       var currency = this.formSearch.controls['currency'].value;
-      localStorage.setItem("currency", (currency == "" ? "USD" : currency));
-      this.router.navigate(['flight/' + origin + '/' + destination + '/' + (currency == "" ? "USD" : currency)]);
+      localStorage.setItem("currency", currency);
+      this.router.navigate(['flight/' + origin + '/' + destination + '/' + currency]);
     }
   }
 }

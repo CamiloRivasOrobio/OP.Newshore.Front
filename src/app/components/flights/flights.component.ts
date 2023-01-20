@@ -30,16 +30,21 @@ export class FlightsComponent implements OnInit {
       this.currencyVa = params['currency'];
     });
     this.formFlight = this.formBuilder.group({ currencyValue: this.currencyVa });
+    this.GetJourney();
+  }
+  GetJourney(){
     this.flightsService.GetJourney({ Origin: this.originVa, Destination: this.destinationVa, Currency: this.currencyVa }).subscribe(
       (data: Response) => {
         this.data = data;
-        // Swal.fire(data.message);
+        Swal.fire(data.message);
         this.journey = data.journey;
         this.flights = this.journey.flights;
         this.loading = false;
       });
   }
   ChangeCurrency() {
+    console.log(this.formFlight.controls['currencyValue'].value);
+    // this.GetJourney();
     this.router.navigate(['flight/' + this.originVa + '/' + this.destinationVa + '/' + this.formFlight.controls['currencyValue'].value]);
   }
 }
